@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>NETO LANCHES – Faça seu pedido</title>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Nunito+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+[hidden]{display:none!important}
+:root{--bg:#120d0b;--card:#1d1613;--tx:#f7efe8;--mu:#b5a79c;--ln:#33271f;--red:#d52a1a;--or:#f08a24;--ok:#3ec46d;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:light){:root:not([data-theme="dark"]){--bg:#fff8f1;--card:#fff;--tx:#2a1a12;--mu:#6f5d51;--ln:#ecd9c8}}
+:root[data-theme="light"]{--bg:#fff8f1;--card:#fff;--tx:#2a1a12;--mu:#6f5d51;--ln:#ecd9c8}
+html{-webkit-text-size-adjust:100%;scroll-padding-top:calc(64px + env(safe-area-inset-top,0px));scroll-behavior:smooth}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--tx);font:400 16px/1.5 'Nunito Sans',system-ui,sans-serif}
+h1,h2,h3{font-family:Oswald,Impact,sans-serif;margin:0;line-height:1.1}
+button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--or);outline-offset:2px}
+.w{max-width:1100px;margin:0 auto;padding:0 16px}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--bg);border-bottom:1px solid var(--ln)}
+header .w{display:flex;align-items:center;justify-content:space-between;height:60px;gap:8px}
+.logo{font:700 26px Oswald,sans-serif;display:flex;align-items:center;gap:6px;text-decoration:none;color:var(--tx)}.logo b{color:var(--red)}
+nav{display:none;gap:20px}nav a{color:var(--tx);text-decoration:none;font-weight:600}
+@media(min-width:760px){nav{display:flex}}
+.btn{background:var(--red);color:#fff;border:0;border-radius:10px;padding:12px 18px;font-weight:800;cursor:pointer;min-height:44px;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:6px}
+.btn:hover{filter:brightness(1.12)}.btn.o{background:transparent;border:2px solid var(--red);color:var(--tx)}.btn.g{background:#1f9e4d}
+.cartb{white-space:nowrap;position:relative;background:var(--card);border:1px solid var(--ln);border-radius:10px;min-height:44px;padding:0 14px;cursor:pointer;font-weight:800}
+.cartb i{position:absolute;top:-7px;right:-7px;background:var(--red);color:#fff;border-radius:99px;font:800 12px/20px sans-serif;min-width:20px;text-align:center;font-style:normal}
+.hero{background:radial-gradient(circle at 80% 30%,#7a2410 0,#2a120b 45%,#120d0b 80%);color:#f7efe8;overflow:hidden}
+.hero .w{display:grid;gap:12px;padding-top:32px;padding-bottom:32px;align-items:center}
+@media(min-width:760px){.hero .w{grid-template-columns:1.1fr 1fr;padding-top:56px;padding-bottom:56px}}
+.hero h1{font-size:clamp(44px,9vw,84px);text-transform:uppercase}.hero h1 span{color:#ef3b27;display:block}
+.hero p{max-width:420px;color:#ddd0c6}.hero .acts{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.hero .btn.o{color:#fff}.hero .big{width:min(100%,460px);justify-self:center;filter:drop-shadow(0 20px 30px #000a)}
+.tag{display:inline-block;background:#00000066;border:1px solid #ffffff33;border-radius:99px;padding:4px 12px;font-size:14px;margin-bottom:12px}
+.info{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:10px;margin:-18px auto 0;position:relative}
+.info div{background:var(--card);border:1px solid var(--ln);border-radius:12px;padding:12px 14px;font-size:14px;color:var(--mu)}.info b{display:block;color:var(--tx);font-size:15px}
+section{padding:32px 0}h2{font-size:30px;margin-bottom:14px}
+.promos{display:flex;gap:12px;overflow-x:auto;padding-bottom:8px;scroll-snap-type:x mandatory}
+.promo{flex:0 0 min(78%,300px);scroll-snap-align:start;background:linear-gradient(135deg,#a8200f,#e0701a);color:#fff;border-radius:14px;padding:16px;display:grid;grid-template-columns:1fr 90px;gap:8px;align-items:center}
+.promo h3{font-size:22px}.promo s{opacity:.8}.promo button{margin-top:8px;background:#fff;color:#a8200f;border:0;border-radius:8px;padding:8px 12px;font-weight:800;cursor:pointer;min-height:40px}
+.tools{display:grid;gap:10px;margin-bottom:12px}@media(min-width:760px){.tools{grid-template-columns:1fr 200px}}
+input,select,textarea{background:var(--card);border:1px solid var(--ln);border-radius:10px;padding:11px 12px;width:100%;min-height:44px}
+.chips{display:flex;gap:8px;overflow-x:auto;padding:4px 0 12px;position:sticky;top:calc(60px + env(safe-area-inset-top,0px));background:var(--bg);z-index:5}
+.chip{flex:none;border:1px solid var(--ln);background:var(--card);border-radius:99px;padding:9px 16px;font-weight:700;cursor:pointer;min-height:44px}
+.chip[aria-pressed=true]{background:var(--red);border-color:var(--red);color:#fff}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
+.card{background:var(--card);border:1px solid var(--ln);border-radius:14px;overflow:hidden;display:flex;flex-direction:column}
+.ph{background:radial-gradient(circle,#3a2418,#1a110d);padding:14px;position:relative;display:grid;place-items:center;height:210px}
+.ph svg{height:170px;width:170px;display:block}.ph svg.tl{width:102px}.promo svg,.hero .big svg{display:block;width:100%;height:auto}
+.bdg{position:absolute;top:10px;left:10px;background:var(--red);color:#fff;border-radius:6px;padding:2px 9px;font:800 12px sans-serif}.bdg.p{background:var(--or);left:auto;right:10px}
+.bd{padding:14px;display:flex;flex-direction:column;gap:6px;flex:1}.bd h3{font-size:21px}.bd p{margin:0;color:var(--mu);font-size:14px;flex:1}
+.sz{font-size:13px;color:var(--mu)}.pr{font:700 20px Oswald,sans-serif}.pr s{font:400 14px sans-serif;color:var(--mu)}
+.empty{padding:30px;text-align:center;color:var(--mu);border:1px dashed var(--ln);border-radius:12px}
+.rev{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:12px}.rev blockquote{margin:0;background:var(--card);border:1px solid var(--ln);border-radius:12px;padding:14px}.st{color:#f5b025;letter-spacing:2px}
+.loc{display:grid;gap:14px}@media(min-width:760px){.loc{grid-template-columns:1fr 1fr}}
+.loc>div{background:var(--card);border:1px solid var(--ln);border-radius:14px;padding:16px}.loc ul{padding-left:18px;color:var(--mu)}
+footer{background:#a8200f;color:#fff;padding:26px 0 90px}footer a{color:#fff}
+.wa{position:fixed;right:14px;bottom:calc(14px + env(safe-area-inset-bottom,0px));z-index:30;background:#1f9e4d;color:#fff;border-radius:99px;padding:0 18px;min-height:52px;display:flex;align-items:center;font-weight:800;text-decoration:none;box-shadow:0 6px 18px #0006}
+.ov{position:fixed;inset:0;background:#000a;z-index:50;display:none;align-items:flex-end;justify-content:center}.ov.on{display:flex}
+@media(min-width:700px){.ov{align-items:center}.ov.side{justify-content:flex-end;align-items:stretch}}
+.box{background:var(--bg);border:1px solid var(--ln);width:100%;max-width:520px;max-height:92%;overflow:auto;border-radius:18px 18px 0 0;padding:18px 18px calc(18px + env(safe-area-inset-bottom,0px))}
+@media(min-width:700px){.box{border-radius:18px}.side .box{max-height:none;border-radius:0;height:100%}}
+.box h2{font-size:26px}.x{float:right;background:var(--card);border:1px solid var(--ln);border-radius:99px;width:44px;height:44px;cursor:pointer}
+fieldset{border:0;padding:0;margin:14px 0}legend{font-weight:800;margin-bottom:6px}
+.opt{display:flex;justify-content:space-between;gap:8px;align-items:center;border:1px solid var(--ln);background:var(--card);border-radius:10px;padding:10px 12px;margin-bottom:6px;cursor:pointer;min-height:44px}
+.opt:has(input:checked){border-color:var(--red);box-shadow:inset 0 0 0 1px var(--red)}.opt input{width:auto;min-height:0}.opt span{flex:1}
+.row{display:flex;justify-content:space-between;gap:8px;padding:5px 0}.tot{font:700 22px Oswald,sans-serif;border-top:1px solid var(--ln);margin-top:6px;padding-top:10px}
+.it{display:grid;grid-template-columns:1fr auto;gap:4px 8px;padding:10px 0;border-bottom:1px solid var(--ln)}.it small{color:var(--mu);grid-column:1}
+.qty{display:inline-flex;align-items:center;gap:4px}.qty button{width:40px;height:40px;border-radius:8px;border:1px solid var(--ln);background:var(--card);cursor:pointer;font-weight:800}
+.msg{font-size:14px;margin:6px 0;color:var(--mu)}.msg.e{color:#ff6b5b}.msg.k{color:var(--ok)}
+button.sb{background:none;border:0;font-size:34px;line-height:1;min-width:44px;min-height:44px;cursor:pointer;padding:0}
+#toast{position:fixed;left:50%;bottom:90px;transform:translateX(-50%);background:#222;color:#fff;border-radius:10px;padding:10px 16px;z-index:80;opacity:0;pointer-events:none;transition:opacity .2s}#toast.on{opacity:1}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style></head><body>
+<header><div class="w">
+<a class="logo" href="#top" aria-label="NETO LANCHES, início"><svg width="30" height="30" viewBox="0 0 100 100" aria-hidden="true"><path d="M50 95 8 25a56 56 0 0 1 84 0z" fill="#f2b84b"/><path d="M8 25a56 56 0 0 1 84 0" fill="none" stroke="#d9873a" stroke-width="9"/><circle cx="40" cy="38" r="7" fill="#d52a1a"/><circle cx="62" cy="46" r="7" fill="#d52a1a"/><circle cx="50" cy="68" r="6" fill="#d52a1a"/></svg>NETO <b>LANCHES</b></a>
+<nav><a href="#cardapio">Cardápio</a><a href="#promos" id="navP" hidden>Promoções</a><a href="#avaliacoes">Avaliações</a><a href="#local">Onde estamos</a></nav>
+<button class="cartb" onclick="openCart()" aria-label="Abrir carrinho">🛒 <span id="ctot">R$ 0,00</span><i id="cn">0</i></button>
+</div></header>
+
+<main id="top">
+<div class="hero"><div class="w">
+<div><h1>Pizza quente.<span>Momentos felizes.</span></h1>
+<p>Massa artesanal, ingredientes frescos e forno a lenha. Escolha, personalize e peça em poucos toques.</p>
+<div class="acts"><a class="btn" href="#cardapio" style="font-size:18px">FAZER PEDIDO</a><button class="btn o" id="repeatBtn" onclick="repeatOrder()" hidden>Repetir último pedido</button></div></div>
+<div class="big" id="heroPz"></div>
+</div></div>
+
+<div class="w info" aria-label="Informações rápidas">
+<div><b>🛵 Entrega 30–50 min</b>Entrega grátis</div>
+<div><b>💳 Pix, cartão e dinheiro</b>Pague na entrega ou retirada</div>
+<div><b>🏪 Retirada no balcão</b>Pronto em 25–30 min</div></div>
+
+<section id="promos" hidden><div class="w"><h2>Quinta da Pizza</h2><div class="promos" id="promoRow"></div></div></section>
+
+<section id="cardapio" style="padding-top:8px"><div class="w"><h2>Cardápio</h2>
+<div class="tools"><input id="q" type="search" placeholder="Buscar pizza, ingrediente ou bebida" aria-label="Buscar produtos" oninput="Q=this.value;render()">
+<select id="mx" aria-label="Filtrar por preço" onchange="MX=+this.value;render()"><option value="999">Qualquer preço</option><option value="30">Até R$ 30</option><option value="50">Até R$ 50</option><option value="80">Até R$ 80</option></select></div>
+<div class="chips" id="chips" role="group" aria-label="Categorias"></div>
+<div class="grid" id="grid" aria-live="polite"></div></div></section>
+
+<section id="avaliacoes"><div class="w"><h2>Avaliações dos clientes</h2><p class="msg" id="rsum"></p><div class="loc">
+<div><h3>Deixe sua avaliação</h3><form id="rf" onsubmit="sendRev(event)" novalidate>
+<label for="rn" style="font-weight:800">Nome</label><input id="rn" maxlength="40" autocomplete="name">
+<fieldset><legend>Nota de 1 a 5 estrelas</legend><div id="rst" role="radiogroup" aria-label="Nota"></div></fieldset>
+<label for="ro" style="font-weight:800">Opinião</label><textarea id="ro" rows="3" maxlength="300"></textarea>
+<p class="msg e" id="rer" role="alert"></p><button class="btn" type="submit">Enviar avaliação</button></form></div>
+<div><h3>O que dizem os clientes</h3><div class="rev" id="rl" style="grid-template-columns:1fr;margin-top:8px"></div></div></div></div></section>
+
+<section id="local"><div class="w"><h2>Onde estamos</h2><div class="loc">
+<div><svg viewBox="0 0 300 180" style="width:100%;border-radius:10px;background:#2b3a33" role="img" aria-label="Mapa estilizado da localização"><path d="M0 120h300M0 60h300M80 0v180M200 0v180" stroke="#4a5d54" stroke-width="10"/><path d="M0 150 300 30" stroke="#6b7f75" stroke-width="6"/><path d="M140 100c-12-22-24-30-24-44a24 24 0 0 1 48 0c0 14-12 22-24 44z" fill="#d52a1a"/><circle cx="140" cy="56" r="9" fill="#fff"/></svg>
+<p style="margin:10px 0 8px">Sítio Inhauá, Sapé – PB</p><a class="btn o" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=S%C3%ADtio+Inha%C3%BA+Sap%C3%A9+PB">Abrir no Google Maps</a></div>
+<div><h3>Fale com a gente</h3><p><a href="https://wa.me/5583993709773" style="color:var(--or)">WhatsApp (83) 99370-9773</a><br><a href="https://www.instagram.com/netolanchesinhaua?stkn=MWpxZDkzNjdjZWs0Nw==" target="_blank" rel="noopener" style="color:var(--or)">@netolanchesinhaua no Instagram</a></p></div></div></div></section>
+</main>
+<footer><div class="w"><b>NETO LANCHES</b> · Quente, fresca, deliciosa.<br>© 2026 NETO LANCHES · Sítio Inhauá, Sapé – PB · <a href="https://www.instagram.com/netolanchesinhaua?stkn=MWpxZDkzNjdjZWs0Nw==" target="_blank" rel="noopener">Instagram</a></div></footer>
+<a class="wa" href="https://wa.me/5583993709773?text=Ol%C3%A1!%20Quero%20fazer%20um%20pedido" target="_blank" rel="noopener">💬 WhatsApp</a>
+<div id="toast" role="status"></div>
+<div class="ov" id="ovC" role="dialog" aria-modal="true" aria-label="Personalizar pizza"><div class="box" id="bC"></div></div>
+<div class="ov side" id="ovK" role="dialog" aria-modal="true" aria-label="Carrinho"><div class="box" id="bK"></div></div>
+
+<script>
+const $=s=>document.querySelector(s),R=n=>'R$ '+n.toFixed(2).replace('.',',');
+const TH=new Date().getDay()===4,dp=v=>TH?Math.round(v*80)/100:v;
+const SZ={B:'Broto · 20 cm',P:'Pequena · 25 cm',M:'Média · 30 cm',G:'Grande · 35 cm',GG:'Gigante · 40 cm'};
+const BO=[['Sem borda',0],['Catupiry',8],['Cheddar',8],['Chocolate',10]],EX=[['Bacon',6],['Queijo extra',5],['Azeitonas',3],['Cebola caramelizada',4]];
+const CATS=[['sal','Pizzas salgadas'],['esp','Pizzas especiais'],['doce','Pizzas doces'],['burg','Hambúrgueres'],['combo','Combos'],['beb','Bebidas'],['suco','Sucos'],['promo','Promoções']].filter(c=>c[0]!=='promo'||TH);
+const P=[
+{id:18,c:'sal',n:'Americana',d:'Mussarela, presunto, bacon, ovos e cebola',p:[9,18,24,29,34],z:['B','P','M','G','GG'],t:'am'},
+{id:19,c:'sal',n:'Bacon',d:'Mussarela, bacon crocante e orégano',p:[9,18,24,29,34],z:['B','P','M','G','GG'],t:'bac'},
+{id:20,c:'sal',n:'Calabresa',d:'Mussarela, calabresa fatiada, cebola e orégano',p:[9,18,24,29,34],z:['B','P','M','G','GG'],t:'cal'},
+{id:21,c:'sal',n:'Calabresa c/catupiry',d:'Mussarela, calabresa e catupiry cremoso',p:[9,18,24,29,34],z:['B','P','M','G','GG'],t:'calc'},
+{id:22,c:'sal',n:'Calabresa c/cheddar',d:'Mussarela, calabresa e cheddar cremoso',p:[9,18,24,29,34],z:['B','P','M','G','GG'],t:'calch'},
+{id:23,c:'sal',n:'Crocante',d:'Mussarela, bacon, calabresa e batata palha',p:[9,18,24,29,34],z:['B','P','M','G','GG'],t:'croc'},
+{id:24,c:'sal',n:'Frango',d:'Mussarela, frango desfiado temperado e milho',p:[9,18,24,29,34],z:['B','P','M','G','GG'],t:'fr'},
+{id:25,c:'sal',n:'Frango c/catupiry',d:'Mussarela, frango desfiado e catupiry cremoso',p:[9,18,24,29,34],z:['B','P','M','G','GG'],t:'frc'},
+{id:26,c:'sal',n:'Frango c/cheddar',d:'Mussarela, frango desfiado e cheddar cremoso',p:[9,18,24,29,34],z:['B','P','M','G','GG'],t:'frch'},
+{id:27,c:'sal',n:'Mussarela',d:'Mussarela, rodelas de tomate e orégano',p:[9,18,24,29,34],z:['B','P','M','G','GG'],t:'mus'},
+{id:28,c:'sal',n:'Mista',d:'Mussarela, presunto, tomate e orégano',p:[9,18,24,29,34],z:['B','P','M','G','GG'],t:'mis'},
+{id:29,c:'sal',n:'Portuguesa',d:'Mussarela, presunto, ovos, cebola, ervilha e azeitona',p:[9,18,24,29,34],z:['B','P','M','G','GG'],t:'port'},
+{id:70,c:'esp',n:'Camarão',d:'Mussarela, camarão refogado, cebola e tomate',p:[17,30,37,42,47],z:['B','P','M','G','GG'],t:'cam'},
+{id:71,c:'esp',n:'Camarão c/catupiry',d:'Mussarela, camarão refogado e catupiry cremoso',p:[17,30,37,42,47],z:['B','P','M','G','GG'],t:'camc'},
+{id:72,c:'esp',n:'Camarão c/cheddar',d:'Mussarela, camarão refogado e cheddar cremoso',p:[17,30,37,42,47],z:['B','P','M','G','GG'],t:'camch'},
+{id:73,c:'esp',n:'Camarão c/cream cheese',d:'Mussarela, camarão refogado e cream cheese',p:[17,30,37,42,47],z:['B','P','M','G','GG'],t:'camcr'},
+{id:74,c:'esp',n:'Charque',d:'Mussarela, charque desfiado, cebola e coentro',p:[17,30,37,42,47],z:['B','P','M','G','GG'],t:'ch'},
+{id:75,c:'esp',n:'Charque c/catupiry',d:'Mussarela, charque desfiado e catupiry cremoso',p:[17,30,37,42,47],z:['B','P','M','G','GG'],t:'chc'},
+{id:76,c:'esp',n:'Charque c/cream cheese',d:'Mussarela, charque desfiado e cream cheese',p:[17,30,37,42,47],z:['B','P','M','G','GG'],t:'chcr'},
+{id:77,c:'esp',n:'Carne de sol',d:'Mussarela, carne de sol desfiada, cebola e coentro',p:[17,30,37,42,47],z:['B','P','M','G','GG'],t:'cs'},
+{id:78,c:'esp',n:'Carne de sol c/catupiry',d:'Mussarela, carne de sol desfiada e catupiry cremoso',p:[17,30,37,42,47],z:['B','P','M','G','GG'],t:'csc'},
+{id:79,c:'esp',n:'Carne de sol c/cream cheese',d:'Mussarela, carne de sol desfiada e cream cheese',p:[17,30,37,42,47],z:['B','P','M','G','GG'],t:'cscr'},
+{id:80,c:'esp',n:'Carne de sol c/nata',d:'Mussarela, carne de sol desfiada e nata cremosa',p:[17,30,37,42,47],z:['B','P','M','G','GG'],t:'csn'},
+{id:30,c:'doce',n:'Banana c/canela',d:'Mussarela, banana, canela e açúcar',p:[9,18,24,29,34],z:['B','P','M','G','GG'],t:'ban'},
+{id:31,c:'doce',n:'Brigadeiro',d:'Brigadeiro cremoso com granulado',p:[9,18,24,29,34],z:['B','P','M','G','GG'],t:'bri'},
+{id:32,c:'doce',n:'Chocolate',d:'Chocolate ao leite cremoso',p:[9,18,24,29,34],z:['B','P','M','G','GG'],t:'cho'},
+{id:33,c:'doce',n:'Prestígio',d:'Chocolate com coco ralado',p:[9,18,24,29,34],z:['B','P','M','G','GG'],t:'prest'},
+{id:34,c:'doce',n:'Romeu e Julieta',d:'Mussarela e goiabada cremosa',p:[9,18,24,29,34],z:['B','P','M','G','GG'],t:'rj'},
+{id:35,c:'burg',n:'Hambúrguer simples',d:'Pão, carne e salada',p:6,t:'bg'},
+{id:36,c:'burg',n:'Hambúrguer',d:'Pão, carne, ovo e salada',p:7,t:'bg'},
+{id:37,c:'burg',n:'X-cheddar',d:'Pão, carne, ovo, cheddar e salada',p:8,t:'bg'},
+{id:38,c:'burg',n:'X-burguer',d:'Pão, carne, ovo, queijo, calabresa e salada',p:8,t:'bg'},
+{id:39,c:'burg',n:'X-bacon',d:'Pão, carne, ovo, queijo, bacon e salada',p:8,t:'bg'},
+{id:40,c:'burg',n:'X-tudo',d:'Pão, carne, ovo, queijo, presunto, calabresa e salada',p:9,t:'bg'},
+{id:41,c:'burg',n:'X-duplo',d:'Pão, 2 carnes, ovo, queijo, calabresa e salada',p:10,t:'bg',dbl:1},
+{id:42,c:'beb',n:'Mini Guaraná 250 ml',d:'Bem gelado, 250 ml',p:2,t:'bt',col:'#2e8b3a'},
+{id:43,c:'beb',n:'Mini Coca-Cola 250 ml',d:'Bem gelado, 250 ml',p:2,t:'bt',col:'#b01e1e'},
+{id:44,c:'beb',n:'Mini Fanta 250 ml',d:'Bem gelado, 250 ml',p:2,t:'bt',col:'#f08a10'},
+{id:45,c:'beb',n:'Guaraná 350 ml',d:'Bem gelado, 350 ml',p:5,t:'bt',col:'#2e8b3a'},
+{id:46,c:'beb',n:'Coca-Cola 350 ml',d:'Bem gelado, 350 ml',p:5,t:'bt',col:'#b01e1e'},
+{id:47,c:'beb',n:'Coca-Cola 1 L',d:'Bem gelado, 1 L',p:7,t:'bt',col:'#b01e1e'},
+{id:48,c:'beb',n:'Guaraná 1 L',d:'Bem gelado, 1 L',p:7,t:'bt',col:'#2e8b3a'},
+{id:49,c:'beb',n:'Guaraná 2 L',d:'Bem gelado, 2 L',p:12,t:'bt',col:'#2e8b3a'},
+{id:50,c:'beb',n:'Fanta 2 L',d:'Bem gelado, 2 L',p:12,t:'bt',col:'#f08a10'},
+{id:51,c:'beb',n:'Coca-Cola 2 L',d:'Bem gelado, 2 L',p:13,t:'bt',col:'#b01e1e'},
+{id:52,c:'beb',n:'Cerveja 350 ml',d:'Bem gelado, 350 ml',p:5,t:'bt',col:'#d9a020'},
+{id:53,c:'beb',n:'Heineken',d:'Bem gelada',p:9,t:'bt',col:'#1f7a3a'},
+{id:54,c:'beb',n:'Budweiser',d:'Bem gelada',p:8,t:'bt',col:'#c0282a'},
+{id:60,c:'suco',n:'Suco de Acerola',d:'Polpa natural, escolha com ou sem leite',p:4.5,opts:[['Sem leite',4.5],['Com leite',5]],t:'cup',col:'#d6213a'},
+{id:61,c:'suco',n:'Suco de Cajá',d:'Polpa natural, escolha com ou sem leite',p:4.5,opts:[['Sem leite',4.5],['Com leite',5]],t:'cup',col:'#f2c230'},
+{id:62,c:'suco',n:'Suco de Uva',d:'Polpa natural, escolha com ou sem leite',p:4.5,opts:[['Sem leite',4.5],['Com leite',5]],t:'cup',col:'#5b2a86'},
+{id:63,c:'suco',n:'Suco de Mangaba',d:'Polpa natural, escolha com ou sem leite',p:4.5,opts:[['Sem leite',4.5],['Com leite',5]],t:'cup',col:'#f0d9a0'},
+{id:64,c:'suco',n:'Suco de Morango',d:'Polpa natural, escolha com ou sem leite',p:4.5,opts:[['Sem leite',4.5],['Com leite',5]],t:'cup',col:'#e0304f'},
+{id:65,c:'suco',n:'Suco de Graviola',d:'Polpa natural, escolha com ou sem leite',p:4.5,opts:[['Sem leite',4.5],['Com leite',5]],t:'cup',col:'#e8e4c0'},
+{id:66,c:'suco',n:'Suco de Abacaxi',d:'Polpa natural, escolha com ou sem leite',p:4.5,opts:[['Sem leite',4.5],['Com leite',5]],t:'cup',col:'#f2d330'},
+{id:67,c:'suco',n:'Suco de Goiaba',d:'Polpa natural, escolha com ou sem leite',p:4.5,opts:[['Sem leite',4.5],['Com leite',5]],t:'cup',col:'#e8607a'},
+{id:68,c:'suco',n:'Suco de Maracujá',d:'Polpa natural, escolha com ou sem leite',p:4.5,opts:[['Sem leite',4.5],['Com leite',5]],t:'cup',col:'#f0b820'}];
+const TP={cam:[['#f08a6a',8,9]],camc:[['#f08a6a',8,9],['#fffaf0',6,6]],camch:[['#f08a6a',8,9],['#f0a020',6,6]],camcr:[['#f08a6a',8,9],['#ece8d8',6,6]],ch:[['#8a4a2a',5,12]],chc:[['#8a4a2a',5,12],['#fffaf0',6,6]],chcr:[['#8a4a2a',5,12],['#ece8d8',6,6]],cs:[['#a85a3a',5,12]],csc:[['#a85a3a',5,12],['#fffaf0',6,6]],cscr:[['#a85a3a',5,12],['#ece8d8',6,6]],csn:[['#a85a3a',5,12],['#fbf3dc',6,6]],bri:[['#3a1c10',9,10],['#e04040',2,6],['#f0c030',2,6]],cho:[['#3a1c10',10,12]],prest:[['#3a1c10',9,9],['#fffaf0',4,12]],am:[['#f6e7a0',7,6],['#e9a0a0',7,8],['#8c2a1a',4,6]],bac:[['#a8321c',3,16],['#e0a080',4,10]],calc:[['#a8321c',6,14],['#fffaf0',6,6]],calch:[['#a8321c',6,14],['#f0a020',6,6]],croc:[['#a8321c',6,8],['#e0a080',4,8],['#e8c870',2,20]],fr:[['#e8c98a',7,12],['#f6e08a',3,8]],frc:[['#e8c98a',7,12],['#fffaf0',6,6]],frch:[['#e8c98a',7,12],['#f0a020',6,6]],mus:[['#fff5c4',8,6],['#d33a2a',5,6]],mis:[['#f0a0a0',8,9],['#fff5c4',5,5]],port:[['#f0a0a0',7,6],['#fff',6,4],['#222',3,6],['#6cb04a',2,10]],pep:[['#b3241a',9,13],['#2f7d32',4,5]],marg:[['#f6f1dc',9,8],['#2f7d32',6,7],['#d33a2a',5,6]],veg:[['#222',4,10],['#3a8a3a',5,8],['#e8b23a',3,10]],meat:[['#8c2a1a',8,9],['#d98a6a',5,9],['#b3241a',7,5]],frango:[['#e8c98a',7,12],['#7a2e12',5,6]],q4:[['#f9e08a',7,10],['#fff5c4',5,8],['#cfd6d0',4,5]],cal:[['#a8321c',6,16],['#f5f0e6',4,8]],choc:[['#2e150c',9,10],['#d62b4a',8,8]],ban:[['#f2d04b',8,10],['#7a4a2a',3,8]],rj:[['#a3202e',9,9],['#f7e7b0',5,6]]};
+const SW=['choc','ban','rj','bri','cho','prest'];
+function pz(t,s){let r=()=>(s=(s*9301+49297)%233280)/233280,o='';
+ const sw=SW.includes(t),T=TP[t]||TP.pep;
+ T.forEach(([c,z,n])=>{for(let i=0;i<n;i++){const a=r()*6.28,d=Math.sqrt(r())*34;o+=`<circle cx="${(50+Math.cos(a)*d).toFixed(1)}" cy="${(50+Math.sin(a)*d).toFixed(1)}" r="${z*(.7+r()*.4)/1.6}" fill="${c}"/>`}});
+ let l='';for(let i=0;i<8;i++){const a=i*.785;l+=`<line x1="50" y1="50" x2="${(50+Math.cos(a)*45).toFixed(1)}" y2="${(50+Math.sin(a)*45).toFixed(1)}" stroke="#0004" stroke-width=".6"/>`}
+ return `<svg viewBox="0 0 100 100" role="img" aria-hidden="true"><circle cx="50" cy="50" r="49" fill="#6b4425"/><circle cx="50" cy="50" r="46" fill="#d9a050"/><circle cx="50" cy="50" r="40" fill="${sw?'#5a3322':'#f1bf45'}"/>${o}${l}</svg>`}
+function bt(c){return `<svg class="tl" viewBox="0 0 60 100" role="img" aria-hidden="true"><rect x="22" y="2" width="16" height="12" rx="3" fill="#ccc"/><path d="M20 14h20l6 16v62a6 6 0 0 1-6 6H20a6 6 0 0 1-6-6V30z" fill="${c}"/><rect x="16" y="46" width="28" height="22" rx="3" fill="#fff9"/></svg>`}
+function bg(d){const pt=(y)=>`<rect x="10" y="${y}" width="80" height="11" rx="5" fill="#5a2d1a"/>`;return `<svg viewBox="0 0 100 100" role="img" aria-hidden="true"><path d="M10 44a40 32 0 0 1 80 0z" fill="#d9953a"/><g fill="#f6e3b0"><ellipse cx="35" cy="26" rx="3" ry="1.6"/><ellipse cx="52" cy="20" rx="3" ry="1.6"/><ellipse cx="67" cy="28" rx="3" ry="1.6"/></g><path d="M8 44q8 8 14 0t14 0 14 0 14 0 14 0 14 0v4H8z" fill="#5fb04a"/><path d="M12 52h76l-8 9-12-5-12 5-12-5-12 5z" fill="#f2c230"/>${pt(56)}${d?pt(66):''}<rect x="10" y="${d?78:68}" width="80" height="13" rx="6" fill="#d9953a"/></svg>`}
+function cup(c){return `<svg class="tl" viewBox="0 0 60 100" role="img" aria-hidden="true"><path d="M36 2l6 0-8 28" stroke="#eee" stroke-width="4" fill="none"/><path d="M8 24h44l-6 70a5 5 0 0 1-5 4H19a5 5 0 0 1-5-4z" fill="${c}"/><path d="M8 24h44l-1 12H9z" fill="#fff4"/></svg>`}
+const ic=p=>p.t==='cup'?cup(p.col):p.t==='bt'?bt(p.col):p.t==='bg'?bg(p.dbl):pz(p.t,p.id*7+3);
+P.forEach(p=>{if(Array.isArray(p.p)&&!p.z)p.z=['P','M','G']});
+const pr=(p,k)=>p.p[p.z.indexOf(k)];
+const min=p=>Array.isArray(p.p)?p.p[0]:p.p;
+let CAT='sal',Q='',MX=999,cart=[],cp=null,mode='entrega',view='cart',cu=null,lastOrder=null;
+try{lastOrder=JSON.parse(localStorage.getItem('pd_last')||'null')}catch(e){}
+$('#heroPz').innerHTML=pz('pep',11);
+$('#repeatBtn').hidden=!lastOrder;
+function chips(){$('#chips').innerHTML=CATS.filter(c=>c[0]==='promo'||P.some(p=>p.c===c[0])).map(([k,n])=>`<button class="chip" aria-pressed="${CAT===k&&!Q}" onclick="CAT='${k}';Q='';$('#q').value='';chips();render()">${n}</button>`).join('')}
+function card(p){const pizza=Array.isArray(p.p);
+ return `<article class="card"><div class="ph">${ic(p)}${p.b?'<span class="bdg">Mais vendida</span>':''}${TH&&pizza?'<span class="bdg p">-20% hoje</span>':''}</div><div class="bd"><h3>${p.n}</h3><p>${p.d}</p>
+ ${pizza?`<div class="sz">Tamanhos: ${p.z.join(' · ')}</div><div class="pr">${TH?`<s>${R(p.p[0])}</s> `:'a partir de '}${R(dp(p.p[0]))}</div>`:`<div class="pr">${p.opts?p.opts.map(o=>o[0]+' '+R(o[1])).join(' · '):R(p.p)}</div>`}
+ ${p.opts?`<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">${p.opts.map((o,i)=>`<button class="btn" onclick="addO(${p.id},${i})">${o[0]}</button>`).join('')}</div>`:`<button class="btn" onclick="add(${p.id})">${pizza?'Personalizar e adicionar':'Adicionar ao carrinho'}</button>`}</div></article>`}
+function render(){const q=Q.trim().toLowerCase();chips();
+ const L=P.filter(p=>(q?(p.n+' '+p.d).toLowerCase().includes(q):CAT==='promo'?Array.isArray(p.p):p.c===CAT)&&dp(min(p))<=MX);
+ $('#grid').innerHTML=L.length?L.map(card).join(''):'<div class="empty" style="grid-column:1/-1">Nada encontrado. Tente outro termo ou filtro de preço.</div>'}
+$('#promoRow').innerHTML=`<div class="promo" style="flex:1 1 100%;grid-template-columns:1fr 110px"><div><h3>20% OFF em todas as pizzas</h3><small>Válido só hoje, quinta-feira.</small><br><button onclick="CAT='promo';Q='';$('#q').value='';render();location.hash='#cardapio'">Ver pizzas em promoção</button></div><div>${pz('pep',11)}</div></div>`;
+function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('on');clearTimeout(t.h);t.h=setTimeout(()=>t.classList.remove('on'),1800)}
+function push(k,n,det,u,q){const e=cart.find(i=>i.k===k);e?e.q+=q:cart.push({k,n,det,u,q});upd();toast('Adicionado: '+n)}
+function addO(id,i){const p=P.find(x=>x.id===id),o=p.opts[i];push('i'+id+'-'+i,p.n,o[0],o[1],1)}
+function add(id){const p=P.find(x=>x.id===id);if(Array.isArray(p.p)){cu={p,s:'M',f2:0,b:0,ex:[],q:1};cust();$('#ovC').classList.add('on');$('#bC').querySelector('.x').focus()}else push('i'+id,p.n,'',p.p,1)}
+function cprice(){const a=pr(cu.p,cu.s),b=cu.f2?pr(P.find(x=>x.id==cu.f2),cu.s):0;return dp(Math.max(a,b))+BO[cu.b][1]+cu.ex.reduce((t,i)=>t+EX[i][1],0)}
+function cust(){const p=cu.p,pool=P.filter(x=>x.c===p.c&&x.z&&x.z.includes(cu.s));
+ $('#bC').innerHTML=`<button class="x" onclick="closeC()" aria-label="Fechar">✕</button><h2>${p.n}</h2><p class="msg">${p.d}</p>
+ <fieldset><legend>Tamanho</legend>${p.z.map(k=>`<label class="opt"><input type="radio" name="s" ${cu.s===k?'checked':''} onchange="setS('${k}')"><span>${SZ[k]}</span><b>${R(dp(pr(p,k)))}</b></label>`).join('')}</fieldset>
+ <fieldset><legend>Sabores</legend><label class="opt"><input type="radio" name="f" ${!cu.f2?'checked':''} onchange="cu.f2=0;cust()"><span>1 sabor</span></label><label class="opt"><input type="radio" name="f" ${cu.f2?'checked':''} onchange="cu.f2=cu.f2||${pool.find(x=>x.id!==p.id).id};cust()"><span>Meio a meio (2 sabores)</span></label>
+ ${cu.f2?`<label class="msg" for="f2">Segundo sabor (vale o preço do mais caro)</label><select id="f2" onchange="cu.f2=+this.value;cust()">${pool.filter(x=>x.id!==p.id).map(x=>`<option value="${x.id}" ${x.id==cu.f2?'selected':''}>${x.n}</option>`).join('')}</select>`:''}</fieldset>
+ <div class="row"><span>Quantidade</span><span class="qty"><button onclick="cu.q=Math.max(1,cu.q-1);cust()" aria-label="Menos">−</button><b>${cu.q}</b><button onclick="cu.q++;cust()" aria-label="Mais">+</button></span></div>
+ <button class="btn" style="width:100%;margin-top:8px" onclick="addCu()">Adicionar · ${R(cprice()*cu.q)}</button>`}
+function setS(k){cu.s=k;if(cu.f2&&!(P.find(x=>x.id==cu.f2).z||[]).includes(k)){const o=P.find(x=>x.c===cu.p.c&&x.id!==cu.p.id&&x.z&&x.z.includes(k));cu.f2=o?o.id:0}cust()}
+function tgx(i){const x=cu.ex.indexOf(i);x<0?cu.ex.push(i):cu.ex.splice(x,1);cust()}
+function addCu(){const f2=cu.f2?P.find(x=>x.id==cu.f2).n:'',det=[SZ[cu.s],f2?'½ '+cu.p.n+' + ½ '+f2:'1 sabor',BO[cu.b][1]?'Borda '+BO[cu.b][0]:'',...cu.ex.map(i=>EX[i][0])].filter(Boolean).join(', ');
+ push(JSON.stringify([cu.p.id,cu.s,cu.f2,cu.b,cu.ex]),cu.p.n,det,cprice(),cu.q);closeC()}
+function closeC(){$('#ovC').classList.remove('on')}
+function calc(){const sub=cart.reduce((t,i)=>t+i.u*i.q,0);let d=0,fee=0;return{sub,d,fee,tot:Math.max(0,sub-d)+fee}}
+function upd(){const c=calc();$('#cn').textContent=cart.reduce((t,i)=>t+i.q,0);$('#ctot').textContent=R(c.sub);if($('#ovK').classList.contains('on'))sheet()}
+function openCart(){view='cart';$('#ovK').classList.add('on');sheet()}
+function closeK(){$('#ovK').classList.remove('on')}
+function qty(i,d){cart[i].q+=d;if(cart[i].q<1)cart.splice(i,1);upd()}
+function totals(){const c=calc();return `<div class="row"><span>Subtotal</span><span>${R(c.sub)}</span></div><div class="row"><span>Taxa de entrega</span><span>Grátis</span></div><div class="row tot"><span>Total</span><span>${R(c.tot)}</span></div>`}
+function sheet(){const h='<button class="x" onclick="closeK()" aria-label="Fechar">✕</button>';
+ if(view==='cart'){$('#bK').innerHTML=h+`<h2>Seu carrinho</h2>`+(cart.length?cart.map((i,k)=>`<div class="it"><b>${i.n}</b><b>${R(i.u*i.q)}</b><small>${i.det||R(i.u)+' cada'}</small><span class="qty"><button onclick="qty(${k},-1)" aria-label="Menos">−</button><b>${i.q}</b><button onclick="qty(${k},1)" aria-label="Mais">+</button></span></div>`).join('')+totals()+`<button class="btn" style="width:100%;margin-top:10px" onclick="view='out';sheet()">Continuar</button>`:`<div class="empty">Seu carrinho está vazio.</div>${lastOrder?'<button class="btn o" style="width:100%;margin-top:10px" onclick="repeatOrder()">Repetir último pedido</button>':''}`)}
+ else if(view==='out'){$('#bK').innerHTML=h+`<h2>Finalizar pedido</h2><fieldset><legend>Como prefere receber?</legend>
+ ${[['entrega','🛵 Entrega'],['retirada','🏪 Retirar no local']].map(([k,n])=>`<label class="opt"><input type="radio" name="m" ${mode===k?'checked':''} onchange="mode='${k}';sheet()"><span>${n}</span></label>`).join('')}</fieldset>
+ ${mode==='entrega'?`<fieldset><legend>Endereço de entrega</legend><input id="ad" placeholder="Rua e número" autocomplete="street-address" style="margin-bottom:6px"><input id="bairro" placeholder="Bairro e complemento"></fieldset>`:'<p class="msg">Retire em: Sítio Inhauá, Sapé – PB.</p>'}
+ <fieldset><legend>Pagamento</legend><select id="pg" aria-label="Forma de pagamento"><option>Pix</option><option>Cartão (na entrega/retirada)</option><option>Dinheiro</option></select></fieldset>
+ <label for="ob" style="font-weight:800">Observações</label><textarea id="ob" rows="2" placeholder="Ex.: sem cebola, tocar a campainha"></textarea>
+ <p class="msg e" id="er"></p>${totals()}<button class="btn" style="width:100%;margin-top:10px" onclick="confirmO()">Confirmar pedido</button><button class="btn o" style="width:100%;margin-top:8px" onclick="view='cart';sheet()">Voltar ao carrinho</button>`}
+ else{const o=lastOrder,eta=new Date(Date.now()+(o.mode==='entrega'?40:28)*6e4),hh=eta.toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'});
+ const txt=encodeURIComponent(`Pedido NETO LANCHES #${o.no}\n`+o.items.map(i=>`${i.q}x ${i.n} ${i.det?'('+i.det+')':''}`).join('\n')+`\nTotal: ${R(o.tot)}\n${o.mode==='entrega'?'Entrega: '+o.addr:'Retirada no local'}\nPagamento: ${o.pay}`);
+ $('#bK').innerHTML=h+`<h2>Pedido confirmado ✅</h2><p class="msg k">Pedido #${o.no} recebido. Previsão: ${o.mode==='entrega'?'30 a 50 min':'25 a 30 min'} (por volta de ${hh}).</p>`+o.items.map(i=>`<div class="it"><b>${i.q}× ${i.n}</b><b>${R(i.u*i.q)}</b><small>${i.det}</small></div>`).join('')+`<div class="row tot"><span>Total</span><span>${R(o.tot)}</span></div><p class="msg">${o.mode==='entrega'?'Entrega em: '+o.addr:'Retirada no balcão'} · Pagamento: ${o.pay}${o.obs?'<br>Obs.: '+o.obs:''}</p>
+ <a class="btn g" style="width:100%" target="_blank" rel="noopener" href="https://wa.me/5583993709773?text=${txt}">Enviar resumo pelo WhatsApp</a><button class="btn o" style="width:100%;margin-top:8px" onclick="closeK()">Fazer novo pedido</button>`}}
+function confirmO(){let addr='';if(mode==='entrega'){const a=$('#ad').value.trim(),b=$('#bairro').value.trim();if(!a||!b){$('#er').textContent='Informe rua, número e bairro para entregar.';$('#ad').focus();return}addr=a+' – '+b}
+ lastOrder={no:Math.floor(1000+Math.random()*9000),items:cart.map(i=>({...i})),tot:calc().tot,mode,addr,pay:$('#pg').value,obs:$('#ob').value.trim()};
+ try{localStorage.setItem('pd_last',JSON.stringify(lastOrder))}catch(e){}
+ $('#repeatBtn').hidden=false;cart=[];cp=null;view='done';upd();sheet()}
+function repeatOrder(){if(!lastOrder)return;cart=lastOrder.items.map(i=>({...i}));upd();openCart();toast('Pedido anterior adicionado')}
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeC();closeK()}});
+[$('#ovC'),$('#ovK')].forEach(o=>o.addEventListener('click',e=>{if(e.target===o)o.classList.remove('on')}));
+if(TH){$('#promos').hidden=false;$('#navP').hidden=false;CAT='promo'}
+const esc=t=>t.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;','\'':'&#39;'}[c]));
+let MY=[],RT=0;try{MY=JSON.parse(localStorage.getItem('pd_rev')||'[]')}catch(e){}
+function rtR(){$('#rst').innerHTML=[1,2,3,4,5].map(i=>`<button type="button" class="sb" role="radio" aria-checked="${RT===i}" aria-label="${i} ${i>1?'estrelas':'estrela'}" onclick="RT=${i};rtR()" style="color:${i<=RT?'#f5b025':'var(--mu)'}">★</button>`).join('')}
+function rvR(){const n=MY.length,a=MY.reduce((t,r)=>t+r.s,0)/(n||1);$('#rsum').textContent=n?`Nota média ${a.toFixed(1).replace('.',',')} de 5 · ${n} ${n>1?'avaliações':'avaliação'}`:'Ainda não há avaliações. Seja o primeiro a avaliar!';
+ $('#rl').innerHTML=MY.map(r=>`<blockquote><div class="st" aria-label="${r.s} de 5 estrelas">${'★'.repeat(r.s)}${'☆'.repeat(5-r.s)}</div>${esc(r.o)}<br><b>${esc(r.n)}</b></blockquote>`).join('')}
+function sendRev(e){e.preventDefault();const n=$('#rn').value.trim(),o=$('#ro').value.trim(),er=$('#rer');
+ if(!n){er.textContent='Digite seu nome.';$('#rn').focus();return}if(!RT){er.textContent='Escolha de 1 a 5 estrelas.';return}if(!o){er.textContent='Escreva sua opinião.';$('#ro').focus();return}
+ er.textContent='';MY.unshift({n,o,s:RT});try{localStorage.setItem('pd_rev',JSON.stringify(MY))}catch(x){}
+ $('#rn').value='';$('#ro').value='';RT=0;rtR();rvR();toast('Obrigado pela sua avaliação!')}
+rtR();rvR();
+render();upd();
+</script></body></html>
